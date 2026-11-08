@@ -1,4 +1,4 @@
-# skills
+# Astack - Adi's Skill Stack
 
 One place to find and install every agent skill I maintain. Some live in this repo; the bigger
 ones keep their own repos, history, and CI, and this catalog points at them.
@@ -37,6 +37,17 @@ npx skills add adityaarakeri/skills --skill judgment-coach
 Add `-g` to install for your user instead of the current project.
 
 ## Catalog
+
+### State machine auditing
+
+[`state-machine-audit`](https://github.com/adityaarakeri/state-machine-audit) audits
+state modeling, async races, side-effect boundaries, and persistence hydration.
+It writes an evidence-backed `REPORT.md` without editing application code.
+The skill, installer, and evaluation suite live in their own repository.
+
+```bash
+npx skills add adityaarakeri/state-machine-audit --global
+```
 
 <!-- catalog:start -->
 ### Engineering discipline
