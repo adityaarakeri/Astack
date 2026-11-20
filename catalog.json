@@ -1,0 +1,97 @@
+{
+  "marketplace": {
+    "name": "adityaarakeri",
+    "repo": "adityaarakeri/Astack",
+    "owner": {
+      "name": "Aditya Arakeri",
+      "url": "https://adityaarakeri.me"
+    },
+    "description": "Adi's Skill Stack: agent skills for engineering discipline, writing, design, and judgment."
+  },
+  "bundle": {
+    "name": "astack",
+    "tagline": "Installs every plugin in this catalog in one step.",
+    "description": "Meta-plugin with no skills of its own. Installing it installs every plugin in the Astack catalog as a dependency."
+  },
+  "categories": [
+    {"id": "engineering", "title": "Engineering discipline"},
+    {"id": "writing-design", "title": "Writing and design"},
+    {"id": "judgment", "title": "Judgment"}
+  ],
+  "plugins": [
+    {
+      "name": "senior-agent-skills",
+      "tagline": "Makes a coding agent plan, test, and verify before shipping.",
+      "description": "Ten skills that give a coding agent senior habits: recon a repo, plan first, test-driven loops, safe refactors, debugging, self-review, git hygiene, dead-code audits, and verifying work is actually done.",
+      "category": "engineering",
+      "agents": ["claude-code", "codex", "cursor", "opencode", "copilot"],
+      "repo": "adityaarakeri/senior-agent-skills",
+      "skills": [
+        "skills/repo-recon",
+        "skills/plan-first",
+        "skills/tdd-loop",
+        "skills/safe-refactor",
+        "skills/debug-protocol",
+        "skills/self-review",
+        "skills/verify-done",
+        "skills/git-hygiene",
+        "skills/dead-code-audit",
+        "skills/evaluate-ai-changes"
+      ]
+    },
+    {
+      "name": "yolo",
+      "tagline": "Hands an agent one goal and stays out of the way.",
+      "description": "Autonomous mode: give the agent a single goal and let it plan, execute, and verify without stopping to ask.",
+      "category": "engineering",
+      "agents": ["claude-code"],
+      "repo": "adityaarakeri/yolo",
+      "skills": [".claude/skills/yolo"]
+    },
+    {
+      "name": "context-relay-tdd",
+      "tagline": "Audits a repo, then fixes it one test-first item at a time, across context resets.",
+      "description": "Writes an audit to a RELAY.md work queue in the repo, then fixes each item red-green-refactor with one commit per item, so any session or agent can resume where the last one stopped.",
+      "category": "engineering",
+      "agents": ["claude-code", "codex", "cursor", "opencode", "copilot"],
+      "repo": null,
+      "skills": ["skills/context-relay-tdd"]
+    },
+    {
+      "name": "humanize-content",
+      "tagline": "Strips AI tells from text without adding new ones.",
+      "description": "Rewrites AI-generated or robotic text so it reads like one specific person wrote it, and audits drafts for AI tells, without introducing the second-order tells most humanizers add.",
+      "category": "writing-design",
+      "agents": ["claude-code", "codex", "cursor", "opencode", "copilot"],
+      "repo": "adityaarakeri/humanize-content",
+      "skills": ["."]
+    },
+    {
+      "name": "handcraft-html",
+      "tagline": "Builds HTML pages that do not read as generated.",
+      "description": "Builds documentation, runbooks, references, and portfolios as HTML that looks hand-made, with named light and dark themes and mobile layouts by default.",
+      "category": "writing-design",
+      "agents": ["claude-code", "codex", "cursor", "opencode", "copilot"],
+      "repo": "adityaarakeri/handcraft-html",
+      "skills": ["handcraft-html"]
+    },
+    {
+      "name": "frontend-engineering",
+      "tagline": "Senior frontend judgment for framework apps.",
+      "description": "Component boundaries, state placement, data fetching, accessibility, performance, and browser verification for React, Next.js, Vue, Svelte, Angular, and Solid apps.",
+      "category": "writing-design",
+      "agents": ["claude-code", "codex", "cursor", "opencode", "copilot"],
+      "repo": null,
+      "skills": ["skills/claude-code-frontend-design"]
+    },
+    {
+      "name": "judgment-coach",
+      "tagline": "Coaches a decision instead of making it for you.",
+      "description": "Walks you through a decision: the real question, hidden options, what matters, reversibility, missing information, and your own lean, then leaves you with a short recap.",
+      "category": "judgment",
+      "agents": ["claude-code", "codex", "cursor", "opencode", "copilot"],
+      "repo": null,
+      "skills": ["skills/judgment-coach"]
+    }
+  ]
+}

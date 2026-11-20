@@ -1,0 +1,117 @@
+{
+  "name": "adityaarakeri",
+  "owner": {
+    "name": "Aditya Arakeri",
+    "url": "https://adityaarakeri.me"
+  },
+  "description": "Adi's Skill Stack: agent skills for engineering discipline, writing, design, and judgment.",
+  "plugins": [
+    {
+      "name": "senior-agent-skills",
+      "description": "Makes a coding agent plan, test, and verify before shipping.",
+      "source": {
+        "source": "github",
+        "repo": "adityaarakeri/senior-agent-skills"
+      },
+      "skills": [
+        "./skills/repo-recon",
+        "./skills/plan-first",
+        "./skills/tdd-loop",
+        "./skills/safe-refactor",
+        "./skills/debug-protocol",
+        "./skills/self-review",
+        "./skills/verify-done",
+        "./skills/git-hygiene",
+        "./skills/dead-code-audit",
+        "./skills/evaluate-ai-changes"
+      ],
+      "strict": false,
+      "category": "engineering"
+    },
+    {
+      "name": "yolo",
+      "description": "Hands an agent one goal and stays out of the way.",
+      "source": {
+        "source": "github",
+        "repo": "adityaarakeri/yolo"
+      },
+      "skills": [
+        "./.claude/skills/yolo"
+      ],
+      "strict": false,
+      "category": "engineering"
+    },
+    {
+      "name": "context-relay-tdd",
+      "description": "Audits a repo, then fixes it one test-first item at a time, across context resets.",
+      "source": "./skills/context-relay-tdd",
+      "skills": [
+        "./"
+      ],
+      "strict": false,
+      "category": "engineering"
+    },
+    {
+      "name": "humanize-content",
+      "description": "Strips AI tells from text without adding new ones.",
+      "source": {
+        "source": "github",
+        "repo": "adityaarakeri/humanize-content"
+      },
+      "skills": [
+        "./"
+      ],
+      "strict": false,
+      "category": "writing-design"
+    },
+    {
+      "name": "handcraft-html",
+      "description": "Builds HTML pages that do not read as generated.",
+      "source": {
+        "source": "github",
+        "repo": "adityaarakeri/handcraft-html"
+      },
+      "skills": [
+        "./handcraft-html"
+      ],
+      "strict": false,
+      "category": "writing-design"
+    },
+    {
+      "name": "frontend-engineering",
+      "description": "Senior frontend judgment for framework apps.",
+      "source": "./skills/claude-code-frontend-design",
+      "skills": [
+        "./"
+      ],
+      "strict": false,
+      "category": "writing-design"
+    },
+    {
+      "name": "judgment-coach",
+      "description": "Coaches a decision instead of making it for you.",
+      "source": "./skills/judgment-coach",
+      "skills": [
+        "./"
+      ],
+      "strict": false,
+      "category": "judgment"
+    },
+    {
+      "name": "astack",
+      "description": "Installs every plugin in this catalog in one step.",
+      "source": "./plugins/astack",
+      "strict": false,
+      "category": "bundle",
+      "dependencies": [
+        "senior-agent-skills",
+        "yolo",
+        "context-relay-tdd",
+        "humanize-content",
+        "handcraft-html",
+        "frontend-engineering",
+        "judgment-coach"
+      ]
+    }
+  ]
+}

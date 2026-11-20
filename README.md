@@ -9,17 +9,21 @@ Browse them with examples at [adityaarakeri.me/skills](https://adityaarakeri.me/
 
 ### Claude Code
 
-Install any plugin in one step (Claude Code 2.1.275 or later):
+Install every plugin at once (Claude Code 2.1.275 or later):
 
 ```text
-/plugin install humanize-content --marketplace adityaarakeri/skills
+/plugin install astack --marketplace adityaarakeri/Astack
 ```
+
+`astack` is a bundle with no skills of its own; it installs each plugin below as a dependency.
+To install just one, use its name instead, e.g.
+`/plugin install humanize-content --marketplace adityaarakeri/Astack`.
 
 On older versions, add the marketplace once and install by `name@adityaarakeri`:
 
 ```text
-/plugin marketplace add adityaarakeri/skills
-/plugin install humanize-content@adityaarakeri
+/plugin marketplace add adityaarakeri/Astack
+/plugin install astack@adityaarakeri
 ```
 
 Once the marketplace is added, `/plugin` with no arguments lets you browse everything in it.
@@ -31,7 +35,7 @@ agents you have and asks where to install:
 
 ```bash
 npx skills add adityaarakeri/senior-agent-skills
-npx skills add adityaarakeri/skills --skill judgment-coach
+npx skills add adityaarakeri/Astack --skill judgment-coach
 ```
 
 Add `-g` to install for your user instead of the current project.
@@ -54,23 +58,24 @@ npx skills add adityaarakeri/state-machine-audit --global
 
 | Plugin | What it does | Skills | Source | Claude Code install |
 |---|---|---|---|---|
-| `senior-agent-skills` | Makes a coding agent plan, test, and verify before shipping. | 10 | [adityaarakeri/senior-agent-skills](https://github.com/adityaarakeri/senior-agent-skills) | `/plugin install senior-agent-skills --marketplace adityaarakeri/skills` |
-| `yolo` | Hands an agent one goal and stays out of the way. | 1 | [adityaarakeri/yolo](https://github.com/adityaarakeri/yolo) | `/plugin install yolo --marketplace adityaarakeri/skills` |
-| `context-relay-tdd` | Audits a repo, then fixes it one test-first item at a time, across context resets. | 1 | [this repo](https://github.com/adityaarakeri/skills/tree/main/skills/context-relay-tdd) | `/plugin install context-relay-tdd --marketplace adityaarakeri/skills` |
+| `senior-agent-skills` | Makes a coding agent plan, test, and verify before shipping. | 10 | [adityaarakeri/senior-agent-skills](https://github.com/adityaarakeri/senior-agent-skills) | `/plugin install senior-agent-skills --marketplace adityaarakeri/Astack` |
+| `yolo` | Hands an agent one goal and stays out of the way. | 1 | [adityaarakeri/yolo](https://github.com/adityaarakeri/yolo) | `/plugin install yolo --marketplace adityaarakeri/Astack` |
+| `context-relay-tdd` | Audits a repo, then fixes it one test-first item at a time, across context resets. | 1 | [this repo](https://github.com/adityaarakeri/Astack/tree/main/skills/context-relay-tdd) | `/plugin install context-relay-tdd --marketplace adityaarakeri/Astack` |
 
 ### Writing and design
 
 | Plugin | What it does | Skills | Source | Claude Code install |
 |---|---|---|---|---|
-| `humanize-content` | Strips AI tells from text without adding new ones. | 1 | [adityaarakeri/humanize-content](https://github.com/adityaarakeri/humanize-content) | `/plugin install humanize-content --marketplace adityaarakeri/skills` |
-| `handcraft-html` | Builds HTML pages that do not read as generated. | 1 | [adityaarakeri/handcraft-html](https://github.com/adityaarakeri/handcraft-html) | `/plugin install handcraft-html --marketplace adityaarakeri/skills` |
-| `frontend-engineering` | Senior frontend judgment for framework apps. | 1 | [this repo](https://github.com/adityaarakeri/skills/tree/main/skills/claude-code-frontend-design) | `/plugin install frontend-engineering --marketplace adityaarakeri/skills` |
+| `humanize-content` | Strips AI tells from text without adding new ones. | 1 | [adityaarakeri/humanize-content](https://github.com/adityaarakeri/humanize-content) | `/plugin install humanize-content --marketplace adityaarakeri/Astack` |
+| `handcraft-html` | Builds HTML pages that do not read as generated. | 1 | [adityaarakeri/handcraft-html](https://github.com/adityaarakeri/handcraft-html) | `/plugin install handcraft-html --marketplace adityaarakeri/Astack` |
+| `frontend-engineering` | Senior frontend judgment for framework apps. | 1 | [this repo](https://github.com/adityaarakeri/Astack/tree/main/skills/claude-code-frontend-design) | `/plugin install frontend-engineering --marketplace adityaarakeri/Astack` |
 
 ### Judgment
 
 | Plugin | What it does | Skills | Source | Claude Code install |
 |---|---|---|---|---|
-| `judgment-coach` | Coaches a decision instead of making it for you. | 1 | [this repo](https://github.com/adityaarakeri/skills/tree/main/skills/judgment-coach) | `/plugin install judgment-coach --marketplace adityaarakeri/skills` |
+| `judgment-coach` | Coaches a decision instead of making it for you. | 1 | [this repo](https://github.com/adityaarakeri/Astack/tree/main/skills/judgment-coach) | `/plugin install judgment-coach --marketplace adityaarakeri/Astack` |
+
 <!-- catalog:end -->
 
 ## How this repo works
@@ -79,6 +84,7 @@ npx skills add adityaarakeri/state-machine-audit --global
 
 - `.claude-plugin/marketplace.json`, the Claude Code marketplace
 - the catalog table in this README
+- `plugins/astack/`, the install-everything bundle (its dependency list is every plugin in the catalog)
 - the skills page on the website, when given `--site`
 
 ```bash
@@ -98,7 +104,9 @@ Only Python 3.10+ is needed. No third-party packages.
    the category, which agents it works with, and the path to each `SKILL.md` folder inside the
    repo. `proof` (a short terminal excerpt) and `demo` (a live page) are optional but they are
    what makes the website entry worth reading.
-3. Run the build with `--site` pointed at your website checkout, then commit both repos.
+   Local plugins hold exactly one skill each.
+3. Run the build with `--site` pointed at your website checkout, then commit both repos. The new
+   plugin joins the `astack` bundle automatically.
 
 Entries hosted elsewhere are validated by their own repos' CI. This repo checks only that the
 catalog is well-formed and that local skills match their declared names.
